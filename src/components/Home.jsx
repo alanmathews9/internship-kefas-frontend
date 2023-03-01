@@ -1,36 +1,15 @@
 import React, { Component } from 'react'
-import Log from './Log'
+
 class Table extends Component {
+    constructor() {
+        super()
+    
+        this.state = {
+            logList: []
+        }
+    }
     render() {
-        const logs = [{
-            id: 0,
-            time_stamp: '2022-09-30 06:51:19.595',
-            application_name: 'SS',
-            level: 'warning',
-            message: 'Setting log level to info',
-            handled_by: '----',
-            handled_time: '----',
-            comment: 'First log',
-        }, {
-            id: 1,
-            time_stamp: '2022-01-21 8:11:39.400',
-            application_name: 'SS',
-            level: 'warning',
-            message: 'Setting log level to info',
-            handled_by: '----',
-            handled_time: '----',
-            comment: 'Second log',
-        }, {
-            id: 2,
-            time_stamp: '2021-06-30 06:31:13.715',
-            application_name: 'SS',
-            level: 'info',
-            message: 'Setting log level to info',
-            handled_by: '----',
-            handled_time: '----',
-            comment: 'Third log',
-        }];
-        const logList = logs.map(log => <Log log={log} />)
+        
    
         return (
             <div>
@@ -47,7 +26,30 @@ class Table extends Component {
                             <th scope="col">COMMENT</th>
                         </tr>
                     </thead>
-                    {logList}
+                    <tbody>
+                        
+                        {this.state.logList.length < 1 ? 
+                            (
+                                <tr className = "text-dark" colSpan = "8">NO LOGS FOUND</tr>
+                        ):
+                        (
+                            this.state.logList.map((log) => (
+                                <tr>
+                                        <td scope="row">{log.id}</td>
+                                        <td>{log.time_stamp}</td>
+                                        <td>{log.application_name}</td>
+                                        <td>{log.level}</td>
+                                        <td>{log.message}</td>
+                                        <td>{log.handled_by}</td>
+                                        <td>{log.handled_time}</td>
+                                        <td>{log.comment}</td>
+                                </tr>
+                            ))
+                            
+                        )
+                        }
+                        
+                    </tbody>
                 </table>
                 
             </div>
