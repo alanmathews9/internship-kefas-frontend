@@ -1,29 +1,38 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+
 
 class Table extends Component {
+    
+    getLogs() { 
+        
+        axios.get('http://127.0.0.1:8000/get_all_logs/')
+            .then(response => { 
+                console.log(response);
+                
+            })
+    }
     constructor() {
         super()
     
         this.state = {
-            logList: []
+            logList:[],
         }
     }
     render() {
-        
-   
         return (
             <div>
-                <table class="table table-dark table-striped-columns">
+                <table className="table table-dark table-striped-columns">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">TIMESTAMP</th>
-                            <th scope="col">APPLICATION_NAME</th>
-                            <th scope="col">LEVEL</th>
-                            <th scope="col">MESSAGE</th>
-                            <th scope="col">HANDLED_BY</th>
-                            <th scope="col">HANDLED_TIME</th>
-                            <th scope="col">COMMENT</th>
+                            <td scope="col">ID</td>
+                            <td scope="col">TIMESTAMP</td>
+                            <td scope="col">APPLICATION_NAME</td>
+                            <td scope="col">LEVEL</td>
+                            <td scope="col">MESSAGE</td>
+                            <td scope="col">HANDLED_BY</td>
+                            <td scope="col">HANDLED_TIME</td>
+                            <td scope="col">COMMENT</td>
                         </tr>
                     </thead>
                     <tbody>
