@@ -4,7 +4,7 @@ class navbar extends Component {
   render() {
     return (
         <div>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">LOG - MONITOR</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,6 +14,20 @@ class navbar extends Component {
                         <div class="navbar-nav">
                           <a class="nav-link active" aria-current="page" href="http://localhost:3000/home">Home</a>
                         </div>
+                    </div>
+                    <div>
+                      <form class="d-flex" role="search">
+                        <div class="navbar-nav">
+                          <a class="nav-link active" aria-current="page" href="http://localhost:3000/sign-in">Sign-In</a>
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form class="d-flex" role="search">
+                        <div class="navbar-nav">
+                          <a class="nav-link active" aria-current="page" href="http://localhost:3000/sign-up">Sign-Up</a>
+                        </div>
+                      </form>
                     </div>
                 </div>
             </nav>
