@@ -6,9 +6,16 @@ const navigate = useNavigate();
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
-const handleSignIn = () => {
-// logic for signing in the user
-navigate("/home"); // redirect to home page
+const handleSignIn = (e) => {
+e.preventDefault();
+    if (email === "admin@xyz" && password === "password") {
+      navigate("/home");
+      alert("Sign in successful!");
+      
+    } else {
+      alert("Incorrect email or password!");
+    }
+ 
 };
 
 return (

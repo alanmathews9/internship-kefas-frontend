@@ -7,9 +7,11 @@ const [email, setEmail] = useState("");
 const [name, setName] = useState("");
 const [password, setPassword] = useState("");
 
-const handleSignUp = () => {
-// logic for signing up the user
-navigate("/home"); // redirect to home page
+const handleSignUp = (e) => {
+e.preventDefault();
+    navigate("/home"); // redirect to home page
+    alert("Signed up successfully!");
+    
 };
 
 return (
