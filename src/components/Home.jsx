@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import Navbar from "./Navbar";
 
 class Table extends Component {
     constructor() {
@@ -30,7 +30,8 @@ class Table extends Component {
         const {logList} = this.state;
         return (
             <div>
-                <table className="table table-dark table-striped-columns">
+                <Navbar />
+                <table className="table table-dark ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
