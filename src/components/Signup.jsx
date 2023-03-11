@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css"
+import Navbar from "./Navbar";
+
 const SignUp = () => {
 const navigate = useNavigate();
 const [email, setEmail] = useState("");
@@ -14,7 +16,8 @@ e.preventDefault();
     
 };
 
-return (
+  return (
+    <div><Navbar />
 <div className="container">
 <h2>Sign Up</h2>
 <form onSubmit={handleSignUp}>
@@ -47,7 +50,9 @@ required
 </label>
 <button type="submit">Sign Up</button>
 </form>
-</div>
+      </div>
+      </div>
+      
 );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css"
+import Navbar from "./Navbar";
 const SignIn = () => {
 const navigate = useNavigate();
 const [email, setEmail] = useState("");
@@ -18,7 +19,8 @@ e.preventDefault();
  
 };
 
-return (
+    return (
+    <div><Navbar />
 <div className="container">
 <h2>Sign In</h2>
 <form onSubmit={handleSignIn}>
@@ -45,7 +47,8 @@ required
 <p>
 Don't have an account? <a href="/sign-up">Sign Up</a>
 </p>
-</div>
+            </div>
+            </div>
 );
 };
 
