@@ -11,7 +11,7 @@ const [password, setPassword] = useState("");
 
 const handleSignUp = (e) => {
 e.preventDefault();
-    navigate("/home"); // redirect to home page
+    navigate("/sign-in"); // redirect to home page
     alert("Signed up successfully!");
     
 };
