@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Signin from './components/Signin'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
-import First from './components/First'
+
 
 
 function App() {
