@@ -11,9 +11,6 @@ class navbar extends Component {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                          <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
-                        </div>
                     </div>
                     <div>
                       <form class="d-flex" role="search">
