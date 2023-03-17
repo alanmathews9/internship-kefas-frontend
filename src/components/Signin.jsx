@@ -14,7 +14,15 @@ const handleSignIn = (e) => {
     email_id: email,
     password: password,
   })
-    
+    .then((response) => { 
+      if (response.data.status === "success") {
+          navigate("/home");
+        } else {
+        alert("Login failed:", response.data.reason);
+        navigate("/sign-in");
+        }
+    })
+  
  
 };
     return (
