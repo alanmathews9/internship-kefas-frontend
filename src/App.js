@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Signin from './components/Signin'
 import Navbar from './components/Navbar'
 import Signup from './components/Signup'
+import Table from './components/Table'
 
 
 
@@ -13,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Table />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/sign-in" element={<Signin />} />
       </Routes>
