@@ -13,7 +13,6 @@ const handleSignUp = (e) => {
 e.preventDefault();
     navigate("/sign-in"); // redirect to home page
     alert("Signed up successfully!");
-    
 };
 
   return (
