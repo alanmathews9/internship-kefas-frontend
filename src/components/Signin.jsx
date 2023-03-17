@@ -16,13 +16,16 @@ const handleSignIn = (e) => {
   })
     .then((response) => { 
       if (response.data.status === "success") {
-          navigate("/home");
-        } else {
+        navigate("/home");
+      }
+      else if (response.data.status === "failure") {
         alert("Login failed:", response.data.reason);
-        navigate("/sign-in");
-        }
+        navigate("/home");
+      }
+      else { 
+        console.log("weeee");
+      }
     })
-  
  
 };
     return (
