@@ -19,7 +19,7 @@ const handleSignIn = (e) => {
         navigate("/logs");
       }
       else if (response.data.status === "failure") {
-        alert("Login failed:", response.data.reason);
+        console.log("Login failed:", response.data.reason);
         navigate("/home");
       }
       else { 
