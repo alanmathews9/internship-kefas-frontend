@@ -4,14 +4,26 @@ import "./styles.css"
 import Navbar from "./Navbar";
 import axios from 'axios'
 
-const handleChange = (e) => {
+class Signin extends Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleChange.bind(this);
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+  handleChange = (e) => {
     this.setState({
       email: e.target.value,
       password: e.target.value,
     });
   };
-  const navigate = useNavigate();
-  const handleSignIn = (e) => {
+    
+  navigate = useNavigate();
+    
+  handleSignIn = (e) => {
     e.preventDefault();
     axios.post("http://127.0.0.1:8000/login/", {
       email_id: this.state.email,
@@ -29,13 +41,7 @@ const handleChange = (e) => {
           console.log("weeee");
         }
       })
-    
   };
-class Signin extends Component {
-  state = {
-    email: '',
-    password: '',
-  }
   render() {
     return (
       <div><Navbar />
