@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css"
 import Navbar from "./Navbar";
 import axios from 'axios'
-const navigate = useNavigate();
+export function Navigate(props) { 
+  const navigate = useNavigate();
+  return (<Signin navigate={navigate}></Signin>)
+}
 class Signin extends Component {
   constructor(props) {
     super(props)
@@ -14,13 +17,17 @@ class Signin extends Component {
       password: '',
     }
   }
-  handleChange = (e) => {
+  handleEmailChange = (e) => {
     this.setState({
-      email: e.target.value,
-      password: e.target.value,
+      email: e.target.value
     });
   };
-    
+  handlePasswordChange = (e) => {
+    this.setState({
+      password: e.target.value
+    });
+  };
+
   
     
   handleSignIn = (e) => {
@@ -31,11 +38,11 @@ class Signin extends Component {
     })
       .then((response) => { 
         if (response.data.status === "success") {
-          this.state.navigate("/logs");
+          this.props.navigate("/logs");
         }
         else if (response.data.status === "failure") {
           console.log("Login failed:", response.data.reason);
-          this.state.navigate("/home");
+          this.props.navigate("/home");
         }
         else { 
           console.log("weeee");
@@ -54,7 +61,7 @@ class Signin extends Component {
               <input
                 type="email"
                 value={this.state.email}
-                onChange={this.handleChange}
+                onChange={this.handleEmailChange}
                 required
               />
             </label>
@@ -63,7 +70,7 @@ class Signin extends Component {
               <input
                 type="password"
                 value={this.state.password}
-                onChange={this.handleChange}
+                onChange={this.handlePasswordChange}
                 required
               />
             </label>
@@ -78,8 +85,5 @@ class Signin extends Component {
     )
   }
 };
-export function Navigate(props) { 
-  const navigate = useNavigate()
-  return (<Signin navigate={navigate}></Signin>)
-}
+
 export default Signin;
