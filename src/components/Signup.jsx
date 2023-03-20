@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css"
+import axios from "axios"
 import Navbar from "./Navbar";
 
 const SignUp = () => {
@@ -9,10 +10,25 @@ const [email, setEmail] = useState("");
 const [name, setName] = useState("");
 const [password, setPassword] = useState("");
 
-const handleSignUp = (e) => {
+const handleSignUp = async (e) => {
 e.preventDefault();
-    navigate("/sign-in"); // redirect to home page
-    alert("Signed up successfully!");
+  const response = await axios.post("http://127.0.0.1:8000/register_user/", {
+      name: name,
+      email_id: email,
+      password: password,
+  })
+    .then((response) => { 
+      if (response.POST.status === "success") {
+        navigate("/signin");
+      }
+      else if (response.POST.status === "failure") {
+        console.log("Login failed:", response.data.reason);
+        navigate("/home");
+      }
+      else { 
+        console.log("weeee");
+      }
+    })
 };
 
   return (
