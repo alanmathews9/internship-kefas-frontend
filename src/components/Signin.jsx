@@ -10,25 +10,26 @@ export function Navigate(props) {
 class Signin extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this);
+    this.setMail = this.setMail.bind(this);
+    this.setPassword = this.setPassword.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.state = {
       email: '',
       password: '',
     }
   }
-  handleEmailChange = (e) => {
+  setMail = (e) => {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
+      
     });
   };
-  handlePasswordChange = (e) => {
+  setPassword = (e) => {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
+      
     });
   };
-
-  
     
   handleSignIn = (e) => {
     e.preventDefault();
@@ -61,7 +62,7 @@ class Signin extends Component {
               <input
                 type="email"
                 value={this.state.email}
-                onChange={this.handleEmailChange}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
@@ -70,7 +71,7 @@ class Signin extends Component {
               <input
                 type="password"
                 value={this.state.password}
-                onChange={this.handlePasswordChange}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </label>
