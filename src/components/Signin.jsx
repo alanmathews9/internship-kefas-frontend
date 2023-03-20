@@ -1,44 +1,53 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css"
 import Navbar from "./Navbar";
 import axios from 'axios'
-const SignIn = () => {
-const navigate = useNavigate();
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
 
-const handleSignIn = async (e) => {
-  e.preventDefault();
-  const response = await axios.post("http://127.0.0.1:8000/login/", {
-    email_id: email,
-    password: password,
-  })
-    .then((response) => { 
-      if (response.data.status === "success") {
-        navigate("/logs");
-      }
-      else if (response.data.status === "failure") {
-        console.log("Login failed:", response.data.reason);
-        navigate("/home");
-      }
-      else { 
-        console.log("weeee");
-      }
+const handleChange = (e) => {
+    this.setState({
+      email: e.target.value,
+      password: e.target.value,
+    });
+  };
+  const navigate = useNavigate();
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    axios.post("http://127.0.0.1:8000/login/", {
+      email_id: this.state.email,
+      password: this.state.password,
     })
- 
-};
+      .then((response) => { 
+        if (response.data.status === "success") {
+          navigate("/logs");
+        }
+        else if (response.data.status === "failure") {
+          console.log("Login failed:", response.data.reason);
+          navigate("/home");
+        }
+        else { 
+          console.log("weeee");
+        }
+      })
+    
+  };
+class Signin extends Component {
+  state = {
+    email: '',
+    password: '',
+  }
+  render() {
     return (
-    <div><Navbar />
+      <div><Navbar />
         <div className="container">
           <h2>Sign In</h2>
-          <form onSubmit={handleSignIn}>
+          <form onSubmit={this.handleSignIn}>
             <label>
               Email:
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={this.handleChange}
                 required
               />
             </label>
@@ -47,7 +56,7 @@ const handleSignIn = async (e) => {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={this.handleChange}
                 required
               />
             </label>
@@ -58,7 +67,11 @@ const handleSignIn = async (e) => {
           </p>
         </div>
       </div>
-    );
-};
+    )
+  }
+}
 
-export default SignIn;
+  
+
+
+export default Signin;
