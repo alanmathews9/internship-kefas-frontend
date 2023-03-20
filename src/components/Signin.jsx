@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css"
 import Navbar from "./Navbar";
 import axios from 'axios'
-
-class SignIn extends Component {
+const navigate = useNavigate();
+class Signin extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
-    this.navigate = this.navigate.bind(this);
     this.state = {
       email: '',
       password: '',
@@ -22,7 +21,7 @@ class SignIn extends Component {
     });
   };
     
-  navigate = useNavigate();
+  
     
   handleSignIn = (e) => {
     e.preventDefault();
@@ -45,6 +44,7 @@ class SignIn extends Component {
   };
   render() {
     return (
+      <div>
       <div><Navbar />
         <div className="container">
           <h2>Sign In</h2>
@@ -73,8 +73,13 @@ class SignIn extends Component {
             Don't have an account? <a href="/sign-up">Sign Up</a>
           </p>
         </div>
-      </div>
+        </div>
+        </div>
     )
   }
 };
-export default SignIn;
+export function Navigate(props) { 
+  const navigate = useNavigate()
+  return (<Signin navigate={navigate}></Signin>)
+}
+export default Signin;
