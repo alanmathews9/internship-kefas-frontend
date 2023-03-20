@@ -18,10 +18,10 @@ e.preventDefault();
       password: password,
   })
     .then((response) => { 
-      if (response.POST.status === "success") {
+      if (response.data.status === "success") {
         navigate("/signin");
       }
-      else if (response.POST.status === "failure") {
+      else if (response.data.status === "failure") {
         console.log("Login failed:", response.data.reason);
         navigate("/home");
       }
