@@ -1,13 +1,8 @@
-import React, { Component } from "react";
-import { useNavigate } from "react-router-dom";
-import "./styles.css"
+import React, { Component } from "react"
+import "./styles.css";
 import Navbar from "./Navbar";
 import axios from 'axios'
-export function Navigate(props) { 
-  const navigate = useNavigate();
-  return (<Signin navigate={navigate}></Signin>)
-}
-class Signin extends Component {
+export default class Signin extends Component {
   constructor(props) {
     super(props)
     this.setMail = this.setMail.bind(this);
@@ -18,37 +13,38 @@ class Signin extends Component {
       password: '',
     }
   }
-  setMail = (e) => {
+  setMail(e){
     this.setState({
-      email: e.target.value,
-      
+      email: e.target.value
     });
   };
-  setPassword = (e) => {
+  setPassword(e){
     this.setState({
-      password: e.target.value,
-      
+      password: e.target.value
     });
   };
     
-  handleSignIn = (e) => {
+  handleSignIn(e) {
     e.preventDefault();
-    axios.post("http://127.0.0.1:8000/login/", {
+    const details = {
       email_id: this.state.email,
       password: this.state.password,
-    })
+    }
+    axios.post("http://127.0.0.1:8000/login/", { details })
       .then((response) => { 
         if (response.data.status === "success") {
-          this.props.navigate("/logs");
+          alert("success");
         }
         else if (response.data.status === "failure") {
-          console.log("Login failed:", response.data.reason);
-          this.props.navigate("/home");
+          console.log();
+          console.log(this.state.password);
+          console.log("Login failed:",response.data.reason);
         }
         else { 
           console.log("weeee");
         }
       })
+    this.setState({email: '', password: ''})
   };
   render() {
     return (
@@ -62,7 +58,7 @@ class Signin extends Component {
               <input
                 type="email"
                 value={this.state.email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={this.setMail}
                 required
               />
             </label>
@@ -71,7 +67,7 @@ class Signin extends Component {
               <input
                 type="password"
                 value={this.state.password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={this.setPassword}
                 required
               />
             </label>
@@ -86,5 +82,3 @@ class Signin extends Component {
     )
   }
 };
-
-export default Signin;
