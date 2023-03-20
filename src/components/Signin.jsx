@@ -4,11 +4,12 @@ import "./styles.css"
 import Navbar from "./Navbar";
 import axios from 'axios'
 
-class Signin extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleChange.bind(this);
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.navigate = this.navigate.bind(this);
     this.state = {
       email: '',
       password: '',
@@ -31,11 +32,11 @@ class Signin extends Component {
     })
       .then((response) => { 
         if (response.data.status === "success") {
-          navigate("/logs");
+          this.state.navigate("/logs");
         }
         else if (response.data.status === "failure") {
           console.log("Login failed:", response.data.reason);
-          navigate("/home");
+          this.state.navigate("/home");
         }
         else { 
           console.log("weeee");
@@ -52,7 +53,7 @@ class Signin extends Component {
               Email:
               <input
                 type="email"
-                value={email}
+                value={this.state.email}
                 onChange={this.handleChange}
                 required
               />
@@ -61,7 +62,7 @@ class Signin extends Component {
               Password:
               <input
                 type="password"
-                value={password}
+                value={this.state.password}
                 onChange={this.handleChange}
                 required
               />
@@ -75,9 +76,5 @@ class Signin extends Component {
       </div>
     )
   }
-}
-
-  
-
-
-export default Signin;
+};
+export default SignIn;
