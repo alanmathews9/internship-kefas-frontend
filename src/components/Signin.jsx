@@ -17,27 +17,27 @@ export default class Signin extends Component {
     this.setState({
       email: e.target.value
     });
+    
   };
+  
   setPassword(e){
     this.setState({
       password: e.target.value
     });
+    
   };
     
   handleSignIn(e) {
     e.preventDefault();
-    const details = {
+
+    axios.post("http://127.0.0.1:8000/login/", {
       email_id: this.state.email,
-      password: this.state.password,
-    }
-    axios.post("http://127.0.0.1:8000/login/", { details })
+      password: this.state.password, })
       .then((response) => { 
         if (response.data.status === "success") {
           alert("success");
         }
         else if (response.data.status === "failure") {
-          console.log();
-          console.log(this.state.password);
           console.log("Login failed:",response.data.reason);
         }
         else { 
@@ -56,6 +56,7 @@ export default class Signin extends Component {
             <label>
               Email:
               <input
+                name="email_id"
                 type="email"
                 value={this.state.email}
                 onChange={this.setMail}
@@ -66,6 +67,7 @@ export default class Signin extends Component {
               Password:
               <input
                 type="password"
+                name="password"  
                 value={this.state.password}
                 onChange={this.setPassword}
                 required
