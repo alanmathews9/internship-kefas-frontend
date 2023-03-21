@@ -25,6 +25,7 @@ class navbar extends Component {
                           <a class="nav-link active" aria-current="page" href="http://localhost:3000/sign-up">Sign-Up</a>
                         </div>
                       </form>
+                      
                     </div>
                 </div>
             </nav>
