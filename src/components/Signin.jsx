@@ -28,24 +28,23 @@ export default class Signin extends Component {
   };
     
   handleSignIn(e) {
-    e.preventDefault();
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("email_id", this.state.email);
+  formData.append("password", this.state.password);
+  
+  axios.post("http://127.0.0.1:8000/login/", formData)
+    .then((response) => { 
+      if (response.data.status === "success") {
+        window.location.href="/logs"
+      }
+      else if (response.data.status === "failure") {
+        alert("login failed");
+      }
+    })
+  this.setState({email: '', password: ''})
+};
 
-    axios.post("http://127.0.0.1:8000/login/", {
-      email_id: this.state.email,
-      password: this.state.password, })
-      .then((response) => { 
-        if (response.data.status === "success") {
-          alert("success");
-        }
-        else if (response.data.status === "failure") {
-          console.log("Login failed:",response.data.reason);
-        }
-        else { 
-          console.log("weeee");
-        }
-      })
-    this.setState({email: '', password: ''})
-  };
   render() {
     return (
       <div>
