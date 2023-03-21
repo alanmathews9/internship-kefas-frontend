@@ -1,24 +1,32 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState , Component} from "react";
 import "./styles.css"
 import axios from "axios"
 import Navbar from "./Navbar";
-export default class Signin extends Component {
+
+export default class Signup extends Component {
   constructor(props) {
     super(props)
+    this.setName = this.setName.bind(this);
     this.setMail = this.setMail.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.state = {
+      name: '',
       email: '',
       password: '',
     }
   }
+  setName(e){
+    this.setState({
+      name: e.target.value
+    });
+    
+  };
+  
   setMail(e){
     this.setState({
       email: e.target.value
     });
-    
   };
   
   setPassword(e){
@@ -28,31 +36,40 @@ export default class Signin extends Component {
     
   };
     
-  handleSignIn(e) {
+handleSignIn(e) {
   e.preventDefault();
-  const formData = new FormData();
-  formData.append("email_id", this.state.email);
-  formData.append("password", this.state.password);
-  
-  axios.post("http://127.0.0.1:8000/login/", formData)
+    const formData = new FormData();
+    formData.append("name", this.state.name);
+    formData.append("email_id", this.state.email);
+    formData.append("password", this.state.password);
+  axios.post("http://127.0.0.1:8000/register_user/", formData)
     .then((response) => { 
       if (response.data.status === "success") {
-        window.location.href="/logs"
+        alert("User Register Successfully")
+        window.location.href="/sign-in"
       }
       else if (response.data.status === "failure") {
-        alert("Incorrect email id or password");
+        alert("User already exists");
       }
     })
-  this.setState({email: '', password: ''})
+  this.setState({name: '',email: '', password: ''})
 };
-
   render() {
     return (
       <div>
       <div><Navbar />
         <div className="container">
           <h2>Sign In</h2>
-          <form onSubmit={this.handleSignIn}>
+            <form onSubmit={this.handleSignIn}>
+            <label>
+              Name:
+              <input                 
+                type="text"                 
+                value={this.state.name}           
+                onChange={this.setName}         
+                required      
+              />
+            </label>
             <label>
               Email:
               <input
@@ -75,54 +92,9 @@ export default class Signin extends Component {
             </label>
             <button type="submit">Sign In</button>
           </form>
-          <p>
-            Don't have an account? <a href="/sign-up">Sign Up</a>
-          </p>
         </div>
         </div>
         </div>
     )
   }
 };
-
-  return (
-    <div><Navbar />
-<div className="container">
-<h2>Sign Up</h2>
-<form onSubmit={handleSignUp}>
-<label>
-Email:
-<input
-type="email"
-value={email}
-onChange={(e) => setEmail(e.target.value)}
-required
-/>
-</label>
-<label>
-Name:
-<input
-type="text"
-value={name}
-onChange={(e) => setName(e.target.value)}
-required
-/>
-</label>
-<label>
-Password:
-<input
-type="password"
-value={password}
-onChange={(e) => setPassword(e.target.value)}
-required
-/>
-</label>
-<button type="submit">Sign Up</button>
-</form>
-      </div>
-      </div>
-      
-);
-};
-
-export default SignUp;
