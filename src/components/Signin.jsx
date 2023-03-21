@@ -39,7 +39,7 @@ export default class Signin extends Component {
         window.location.href="/logs"
       }
       else if (response.data.status === "failure") {
-        alert("login failed");
+        alert("Incorrect email id or password");
       }
     })
   this.setState({email: '', password: ''})
