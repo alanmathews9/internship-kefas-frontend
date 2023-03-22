@@ -9,27 +9,33 @@ export default class Signin extends Component {
     this.setPassword = this.setPassword.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.state = {
-      email: '',
-      password: '',
+      loginInfo: {
+        email: '',
+        password: '',
+      }
     }
   }
-  setMail(e){
+  handleChange(e) { 
     this.setState({
-      email: e.target.value
+      loginInfo: e.target.value
     });
+  }
+  // setMail(e){
+  //   this.setState({
+  //     email: e.target.value
+  //   });
     
-  };
+  // };
   
-  setPassword(e){
-    this.setState({
-      password: e.target.value
-    });
+  // setPassword(e){
+  //   this.setState({
+  //     password: e.target.value
+  //   });
     
-  };
+  // };
     
   handleSignIn(e) {
   e.preventDefault();
-  
   const formData = new FormData();
   formData.append("email_id", this.state.email);
   formData.append("password", this.state.password);
@@ -78,7 +84,7 @@ export default class Signin extends Component {
             Don't have an account? <a href="/sign-up">Sign Up</a>
           </p>
         </div>
-      </div>
+        </div>
     )
   }
 };
