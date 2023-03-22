@@ -29,6 +29,7 @@ export default class Signin extends Component {
     
   handleSignIn(e) {
   e.preventDefault();
+  
   const formData = new FormData();
   formData.append("email_id", this.state.email);
   formData.append("password", this.state.password);
@@ -48,7 +49,6 @@ export default class Signin extends Component {
   render() {
     return (
       <div>
-      <div><Navbar />
         <div className="container">
           <h2>Sign In</h2>
           <form onSubmit={this.handleSignIn}>
@@ -78,8 +78,7 @@ export default class Signin extends Component {
             Don't have an account? <a href="/sign-up">Sign Up</a>
           </p>
         </div>
-        </div>
-        </div>
+      </div>
     )
   }
 };

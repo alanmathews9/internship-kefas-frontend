@@ -30,7 +30,6 @@ class Table extends Component {
         const {logList} = this.state;
         return (
             <div>
-                <Navbar />
                 <table className="table table-dark ">
                     <thead>
                         <tr>

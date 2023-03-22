@@ -57,7 +57,7 @@ handleSignIn(e) {
   render() {
     return (
       <div>
-      <div><Navbar />
+      <div>
         <div className="container">
           <h2>Sign In</h2>
             <form onSubmit={this.handleSignIn}>

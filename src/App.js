@@ -11,7 +11,7 @@ import Table from './components/Table'
 
 function App() {
   return (
-    <Router>
+    <Router><Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
