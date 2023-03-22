@@ -3,7 +3,7 @@ import "./styles.css";
 import Navbar from "./Navbar";
 import axios from 'axios';
 
-export default class Signin extends Component {
+class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,21 +15,17 @@ export default class Signin extends Component {
   }
   
   handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-      loginInfo: {
-        ...this.state.loginInfo,
-        [name]: value
-      }
-    });
+    let loginInfo  = { ...this.state.loginInfo };
+    loginInfo[e.target.name] = e.target.value;
+    this.setState({ loginInfo });
     console.log(this.state.loginInfo.email_id);
     console.log(this.state.loginInfo.password);
   };
     
   handleSignIn = (e) => {
     e.preventDefault();
-    const { email_id, password } = this.state.loginInfo;
-    axios.post("http://127.0.0.1:8000/login/", { email_id, password })
+    console.log(this.state.loginInfo);
+    axios.post("http://127.0.0.1:8000/login/", this.state.loginInfo )
       .then((response) => {
         if (response.data.status === "success") {
           window.location.href="/logs"
@@ -49,13 +45,13 @@ export default class Signin extends Component {
       <div>
         <div className="container">
           <h2>Sign In</h2>
-          <form onSubmit={this.handleSignIn}>
+          <form method = "POST" onSubmit={this.handleSignIn}>
             <label>
               Email:
               <input
                 name="email_id"
                 type="email"
-                value={this.state.loginInfo.email_id}
+                // value={this.state.loginInfo.email_id}
                 onChange={this.handleChange}
                 required
               />
@@ -65,7 +61,7 @@ export default class Signin extends Component {
               <input
                 type="password"
                 name="password"  
-                value={this.state.loginInfo.password}
+                // value={this.state.loginInfo.password}
                 onChange={this.handleChange}
                 required
               />
@@ -80,3 +76,5 @@ export default class Signin extends Component {
     );
   }
 }
+
+export default Signin
