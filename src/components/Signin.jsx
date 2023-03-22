@@ -5,20 +5,20 @@ import axios from 'axios'
 export default class Signin extends Component {
   constructor(props) {
     super(props)
-    this.setMail = this.setMail.bind(this);
-    this.setPassword = this.setPassword.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.state = {
       loginInfo: {
-        email: '',
-        password: '',
+        email_id: this.state.email,
+        password: this.state.password,
       }
     }
   }
   handleChange(e) { 
     this.setState({
-      loginInfo: e.target.value
-    });
+      email: e.target.value,
+      password: e.target.value
+    }); 
   }
   // setMail(e){
   //   this.setState({
@@ -36,17 +36,18 @@ export default class Signin extends Component {
     
   handleSignIn(e) {
   e.preventDefault();
-  const formData = new FormData();
-  formData.append("email_id", this.state.email);
-  formData.append("password", this.state.password);
+  // const formData = new FormData();
+  // formData.append("email_id", this.state.email);
+  // formData.append("password", this.state.password);
   
-  axios.post("http://127.0.0.1:8000/login/", formData)
+    axios.post("http://127.0.0.1:8000/login/", this.state.loginInfo )
     .then((response) => { 
       if (response.data.status === "success") {
         window.location.href="/logs"
       }
       else if (response.data.status === "failure") {
         alert("Incorrect email id or password");
+        console.log(response.data.reason);
       }
     })
   this.setState({email: '', password: ''})
@@ -64,7 +65,7 @@ export default class Signin extends Component {
                 name="email_id"
                 type="email"
                 value={this.state.email}
-                onChange={this.setMail}
+                onChange={this.handleChange}
                 required
               />
             </label>
@@ -74,7 +75,7 @@ export default class Signin extends Component {
                 type="password"
                 name="password"  
                 value={this.state.password}
-                onChange={this.setPassword}
+                onChange={this.handleChange}
                 required
               />
             </label>
