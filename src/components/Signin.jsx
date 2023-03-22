@@ -1,51 +1,49 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import "./styles.css";
 import Navbar from "./Navbar";
-import axios from 'axios'
+import axios from 'axios';
+
 export default class Signin extends Component {
   constructor(props) {
-    super(props)
-    this.setMail = this.setMail.bind(this);
-    this.setPassword = this.setPassword.bind(this);
-    this.handleSignIn = this.handleSignIn.bind(this);
+    super(props);
     this.state = {
-      email: '',
-      password: '',
-    }
+      loginInfo: {
+        email_id: '',
+        password: '',
+      }
+    };
   }
-  setMail(e){
-    this.setState({
-      email: e.target.value
-    });
-    
-  };
   
-  setPassword(e){
+  handleChange = (e) => {
+    const { name, value } = e.target;
     this.setState({
-      password: e.target.value
+      loginInfo: {
+        ...this.state.loginInfo,
+        [name]: value
+      }
     });
-    
+    console.log(this.state.loginInfo.email_id);
+    console.log(this.state.loginInfo.password);
   };
     
-  handleSignIn(e) {
-  e.preventDefault();
-  const formData = new FormData();
-  formData.append("email_id", this.state.email);
-  formData.append("password", this.state.password);
-  
-  axios.post("http://127.0.0.1:8000/login/", formData)
-    .then((response) => { 
-      if (response.data.status === "success") {
-        window.location.href="/logs"
-      }
-      else if (response.data.status === "failure") {
-        alert("Incorrect email id or password");
-      }
-    }).catch((err) => { 
-      console.log(err);
-    });
-};
+  handleSignIn = (e) => {
+    e.preventDefault();
+    const { email_id, password } = this.state.loginInfo;
+    axios.post("http://127.0.0.1:8000/login/", { email_id, password })
+      .then((response) => {
+        if (response.data.status === "success") {
+          window.location.href="/logs"
+        }
+        else if (response.data.status === "failure") {
+          alert("Incorrect email id or password");
+          console.log(response.data.reason);
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
 
+  
   render() {
     return (
       <div>
@@ -57,8 +55,8 @@ export default class Signin extends Component {
               <input
                 name="email_id"
                 type="email"
-                value={this.state.email}
-                onChange={this.setMail}
+                value={this.state.loginInfo.email_id}
+                onChange={this.handleChange}
                 required
               />
             </label>
@@ -67,8 +65,8 @@ export default class Signin extends Component {
               <input
                 type="password"
                 name="password"  
-                value={this.state.password}
-                onChange={this.setPassword}
+                value={this.state.loginInfo.password}
+                onChange={this.handleChange}
                 required
               />
             </label>
@@ -78,8 +76,7 @@ export default class Signin extends Component {
             Don't have an account? <a href="/sign-up">Sign Up</a>
           </p>
         </div>
-
-        </div>
-    )
+      </div>
+    );
   }
-};
+}
