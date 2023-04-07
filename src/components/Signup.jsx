@@ -5,44 +5,55 @@ import Navbar from "./Navbar";
 
 export default class Signup extends Component {
   constructor(props) {
-    super(props)
-    this.setName = this.setName.bind(this);
-    this.setMail = this.setMail.bind(this);
-    this.setPassword = this.setPassword.bind(this);
-    this.handleSignIn = this.handleSignIn.bind(this);
+    super(props);
+    // this.setName = this.setName.bind(this);
+    // this.setMail = this.setMail.bind(this);
+    // this.setPassword = this.setPassword.bind(this);
+    // this.handleSignIn = this.handleSignIn.bind(this);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-    }
+      signinInfo: {
+        name: '',
+        email: '',
+        password: '',
+      }
+    };
   }
-  setName(e){
-    this.setState({
-      name: e.target.value
-    });
-    
+
+  handleChange = (e) => {
+    let loginInfo = { ...this.state.loginInfo };
+    loginInfo[e.target.name] = e.target.value;
+    this.setState({ loginInfo });
+    console.log(this.state.loginInfo.name);
+    console.log(this.state.loginInfo.email_id);
+    console.log(this.state.loginInfo.password);
   };
+  // setName(e){
+  //   this.setState({
+  //     name: e.target.value
+  //   });
+    
+  // };
   
-  setMail(e){
-    this.setState({
-      email: e.target.value
-    });
-  };
+  // setMail(e){
+  //   this.setState({
+  //     email: e.target.value
+  //   });
+  // };
   
-  setPassword(e){
-    this.setState({
-      password: e.target.value
-    });
+  // setPassword(e){
+  //   this.setState({
+  //     password: e.target.value
+  //   });
     
-  };
+  // };
     
-handleSignIn(e) {
+handleSignUp = (e) =>{
   e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", this.state.name);
-    formData.append("email_id", this.state.email);
-    formData.append("password", this.state.password);
-  axios.post("http://127.0.0.1:8000/register_user/", formData)
+    // const formData = new FormData();
+    // formData.append("name", this.state.name);
+    // formData.append("email_id", this.state.email);
+    // formData.append("password", this.state.password);
+  axios.post("http://127.0.0.1:8000/register_user/", this.state.signinInfo)
     .then((response) => { 
       if (response.data.status === "success") {
         alert("User Register Successfully")
