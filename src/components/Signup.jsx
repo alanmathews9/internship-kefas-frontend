@@ -3,7 +3,7 @@ import "./styles.css"
 import axios from "axios"
 import Navbar from "./Navbar";
 
-export default class Signup extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     // this.setName = this.setName.bind(this);
@@ -62,50 +62,56 @@ handleSignUp = (e) =>{
       else if (response.data.status === "failure") {
         alert("User already exists");
       }
-    })
-  this.setState({name: '',email: '', password: ''})
-};
+    }).catch((error) => {
+        console.log(error);
+      });
+  // this.setState({name: '',email: '', password: ''})
+  };
+  
   render() {
     return (
       <div>
-      <div>
-        <div className="container">
-          <h2>Sign In</h2>
-            <form onSubmit={this.handleSignIn}>
-            <label>
-              Name:
-              <input                 
-                type="text"                 
-                value={this.state.name}           
-                onChange={this.setName}         
-                required      
-              />
-            </label>
-            <label>
-              Email:
-              <input
-                name="email_id"
-                type="email"
-                value={this.state.email}
-                onChange={this.setMail}
-                required
-              />
-            </label>
-            <label>
-              Password:
-              <input
-                type="password"
-                name="password"  
-                value={this.state.password}
-                onChange={this.setPassword}
-                required
-              />
-            </label>
-            <button type="submit">Sign In</button>
-          </form>
+        <div>
+          <div className="container">
+            <h2>Sign Up</h2>
+            <form method="POST" onSubmit={this.handleSignUp}>
+              <label>
+                Name:
+                <input
+                  name="name"
+                  type="text"
+                  // value={this.state.name}           
+                  onChange={this.handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  name="email_id"
+                  type="email"
+                  // value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Password:
+                <input
+                  type="password"
+                  name="password"
+                  // value={this.state.password}
+                  onChange={this.handleChange}
+                  required
+                />
+              </label>
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
         </div>
-        </div>
-        </div>
-    )
+      </div>
+    );
   }
 };
+
+export default Signup;
