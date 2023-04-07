@@ -13,7 +13,7 @@ class Signup extends Component {
     this.state = {
       signinInfo: {
         name: '',
-        email: '',
+        email_id: '',
         password: '',
       }
     };
@@ -61,7 +61,9 @@ handleSignUp = (e) =>{
       }
       else if (response.data.status === "failure") {
         alert("User already exists");
+        console.log(response.data.reason);
       }
+
     }).catch((error) => {
         console.log(error);
       });
