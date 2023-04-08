@@ -11,6 +11,7 @@ class navbar extends Component {
       .then((response) => {
         if (response.data.status === "success") {
           localStorage.removeItem('session_id');
+          localStorage.removeItem('email_id');
           window.location.href="/"
         }
         else if (response.data.status === "failure") {
