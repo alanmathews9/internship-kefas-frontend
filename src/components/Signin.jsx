@@ -56,7 +56,6 @@ class Signin extends Component {
                 <input
                   name="email_id"
                   type="email"
-                  // value={this.state.loginInfo.email_id}
                   onChange={this.handleChange}
                   required
                 />
@@ -66,7 +65,6 @@ class Signin extends Component {
                 <input
                   type="password"
                   name="password"
-                  // value={this.state.loginInfo.password}
                   onChange={this.handleChange}
                   required
                 />
