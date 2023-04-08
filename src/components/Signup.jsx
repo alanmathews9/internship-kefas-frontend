@@ -1,7 +1,7 @@
 import React, { useState , Component} from "react";
 import "./styles.css"
 import axios from "axios"
-import Navbar from "./Navbar";
+
 
 class Signup extends Component {
   constructor(props) {

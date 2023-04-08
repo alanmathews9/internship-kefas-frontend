@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 class navbar extends Component {
 
-
-
   handleLogout = (e) => {
     e.preventDefault();
     axios.post("http://127.0.0.1:8000/logout/", { session_id: localStorage.getItem('session_id') })
