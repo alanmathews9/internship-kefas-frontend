@@ -38,22 +38,35 @@ class navbar extends Component {
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
-              <Link to="/">
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-light me-2"
-                >
-                  Sign in
-                </button>
-              </Link>
+                <text>
+                    {this.state.logoutInfo.email_id}
+                </text>
               <Link to="/sign-up">
-                <button type="button" className="btn btn-sm btn-light">
-                  Sign up
+                <button
+                    type="button"
+                    className="btn btn-sm btn-light"
+                    onClick={this.handleLogout}
+                  >
+                  Logout
                 </button>
               </Link>
             </div>
             ): (
-                             
+                <div>
+                  <Link to="/">
+                    <button
+                    type="button"
+                    className="btn btn-sm btn-outline-light me-2"
+                    >
+                    Sign in
+                    </button>
+                  </Link>                 
+                  <Link to="/sign-up">                  
+                    <button type="button" className="btn btn-sm btn-light">                    
+                      Sign up                    
+                    </button>                  
+                  </Link>                 
+                </div>               
             )}
           </div>
         </nav>
