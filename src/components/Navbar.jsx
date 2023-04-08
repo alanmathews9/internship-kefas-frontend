@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 class navbar extends Component {
 
+
+
   handleLogout = (e) => {
     e.preventDefault();
-    axios.post("http://127.0.0.1:8000/logout/", localStorage.getItem('session_id'))
+    axios.post("http://127.0.0.1:8000/logout/", { session_id: localStorage.getItem('session_id') })
       .then((response) => {
         if (response.data.status === "success") {
           localStorage.removeItem('session_id');
-          window.location.href="/home"
+          window.location.href="/"
         }
         else if (response.data.status === "failure") {
           alert("Invalid session_id");
@@ -28,8 +30,8 @@ class navbar extends Component {
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
-                <text>
-                    {localStorage.getItem('session_id')}
+                <text className="text-white">
+                    {localStorage.getItem('email_id')}
                 </text>
               <Link to="/sign-up">
                 <button
@@ -65,5 +67,4 @@ class navbar extends Component {
     )
   }
 }
-
 export default navbar
