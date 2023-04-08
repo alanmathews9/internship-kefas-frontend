@@ -20,12 +20,12 @@ class Signup extends Component {
   }
 
   handleChange = (e) => {
-    let loginInfo = { ...this.state.loginInfo };
-    loginInfo[e.target.name] = e.target.value;
-    this.setState({ loginInfo });
-    console.log(this.state.loginInfo.name);
-    console.log(this.state.loginInfo.email_id);
-    console.log(this.state.loginInfo.password);
+    let signinInfo = { ...this.state.signinInfo };
+    signinInfo[e.target.name] = e.target.value;
+    this.setState({ signinInfo });
+    console.log(this.state.signinInfo.name);
+    console.log(this.state.signinInfo.email_id);
+    console.log(this.state.signinInfo.password);
   };
   // setName(e){
   //   this.setState({
