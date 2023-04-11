@@ -51,8 +51,8 @@ class Home extends Component {
                                 <th scope="col">LEVEL</th>
                                 <th scope="col">MESSAGE</th>
                                 <th scope="col">HANDLED_BY</th>
-                                {/* <td>
-                                    {item.handled_by === null ? (
+                                 <td>
+                                    {/* {item.handled_by === null ? ( */}
                                         
                                         <button
                                             
@@ -60,14 +60,14 @@ class Home extends Component {
                                             
                                             className="btn btm-sm btn-link"
                                             
-                                            onClick={(event) => this.handleLog(event, item.id)}
+                                            // onClick={(event) => this.handleLog(event, item.id)}
                                         >
                                         handle yourself
                                         </button>                       
-                                    ) : (
-                          item.handled_by
-                                    )}    
-                                </td> */}
+                                    {/* ) : ( */}
+                          {/* item.handled_by */}
+                                    {/* )} */}
+                                </td> 
                                 <th scope="col">HANDLED_TIME</th>
                                 <th scope="col">COMMENT</th>
                             </tr>
