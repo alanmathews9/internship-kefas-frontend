@@ -70,22 +70,18 @@ class Home extends Component {
                                             <td>{log.level}</td>
                                             <td>{log.message}</td>
                                              <td>
-                                    {item.handled_by === null ? (
-                                        
-                                        <button
-                                            
-                                            type="button"
-                                            
-                                            className="btn btm-sm btn-link"
-                                            
-                                            onClick={(event) => this.handleLog(event, item.id)}
-                                        >
-                                        handle yourself
-                                        </button>                       
-                                    ) : (
-                          item.handled_by
-                                    )}    
-                                </td> 
+                                                {item.handled_by === null ? (
+                                                    <button
+                                                        type="button"
+                                                        className="btn btm-sm btn-link"
+                                                        onClick={(event) => this.handleLog(event, item.id)}      
+                                                    >  
+                                                        handle yourself                                                      
+                                                    </button>                                                                          
+                                              ) : (                                                  
+                                                        item.handled_by                                                      
+                                                )}                                                   
+                                            </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>{log.comment}</td>
                                         </tr>
