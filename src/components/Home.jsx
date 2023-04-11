@@ -50,7 +50,8 @@ class Home extends Component {
                                 <th scope="col">APPLICATION_NAME</th>
                                 <th scope="col">LEVEL</th>
                                 <th scope="col">MESSAGE</th>
-                                <td>
+                                <th scope="col">HANDLED_BY</th>
+                                {/* <td>
                                     {item.handled_by === null ? (
                                         
                                         <button
@@ -66,7 +67,7 @@ class Home extends Component {
                                     ) : (
                           item.handled_by
                                     )}    
-                                </td>
+                                </td> */}
                                 <th scope="col">HANDLED_TIME</th>
                                 <th scope="col">COMMENT</th>
                             </tr>
