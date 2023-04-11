@@ -41,16 +41,32 @@ class Home extends Component {
         }
         else {
             return (
-                <div>
-                    <table className="table table-dark ">
-                        <thead>
+                <div className="table-responsive my-2">
+                    <table className="table table-hover ">
+                        <thead className="table-secondary">
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">TIMESTAMP</th>
                                 <th scope="col">APPLICATION_NAME</th>
                                 <th scope="col">LEVEL</th>
                                 <th scope="col">MESSAGE</th>
-                                <th scope="col">HANDLED_BY</th>
+                                <td>
+                                    {item.handled_by === null ? (
+                                        
+                                        <button
+                                            
+                                            type="button"
+                                            
+                                            className="btn btm-sm btn-link"
+                                            
+                                            onClick={(event) => this.handleLog(event, item.id)}
+                                        >
+                                        handle yourself
+                                        </button>                       
+                                    ) : (
+                          item.handled_by
+                                    )}    
+                                </td>
                                 <th scope="col">HANDLED_TIME</th>
                                 <th scope="col">COMMENT</th>
                             </tr>
