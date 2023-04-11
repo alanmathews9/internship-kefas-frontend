@@ -29,7 +29,7 @@ handleSignUp = (e) =>{
     .then((response) => { 
       if (response.data.status === "success") {
         alert("User Register Successfully")
-        window.location.href="/sign-in"
+        window.location.href="/"
       }
       else if (response.data.status === "failure") {
         alert("User already exists");
