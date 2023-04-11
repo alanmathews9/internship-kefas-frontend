@@ -2,7 +2,6 @@ import React, { useState , Component} from "react";
 import "./styles.css"
 import axios from "axios"
 
-
 class Signup extends Component {
   constructor(props) {
     super(props);
