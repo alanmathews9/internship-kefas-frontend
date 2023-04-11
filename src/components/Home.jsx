@@ -51,23 +51,6 @@ class Home extends Component {
                                 <th scope="col">LEVEL</th>
                                 <th scope="col">MESSAGE</th>
                                 <th scope="col">HANDLED_BY</th>
-                                 <td>
-                                    {/* {item.handled_by === null ? ( */}
-                                        
-                                        <button
-                                            
-                                            type="button"
-                                            
-                                            className="btn btm-sm btn-link"
-                                            
-                                            // onClick={(event) => this.handleLog(event, item.id)}
-                                        >
-                                        handle yourself
-                                        </button>                       
-                                    {/* ) : ( */}
-                          {/* item.handled_by */}
-                                    {/* )} */}
-                                </td> 
                                 <th scope="col">HANDLED_TIME</th>
                                 <th scope="col">COMMENT</th>
                             </tr>
@@ -86,7 +69,23 @@ class Home extends Component {
                                             <td>{log.application_name}</td>
                                             <td>{log.level}</td>
                                             <td>{log.message}</td>
-                                            <td>{log.handled_by}</td>
+                                             <td>
+                                    {item.handled_by === null ? (
+                                        
+                                        <button
+                                            
+                                            type="button"
+                                            
+                                            className="btn btm-sm btn-link"
+                                            
+                                            onClick={(event) => this.handleLog(event, item.id)}
+                                        >
+                                        handle yourself
+                                        </button>                       
+                                    ) : (
+                          item.handled_by
+                                    )}    
+                                </td> 
                                             <td>{log.handled_time}</td>
                                             <td>{log.comment}</td>
                                         </tr>
