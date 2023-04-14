@@ -10,6 +10,42 @@ class Home extends Component {
         }
     }
 
+
+
+    handleLog = (event, log_id) => {
+      event.preventDefault();
+      const email_id = localStorage.getItem("email_id");
+      const current_time = new Date().toLocaleString();
+      axios
+        .post(`/api/logs/${log_id}/handle/`, {
+          handled_by: email_id,
+          handled_time: current_time,
+        }, {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+        })
+        .then((response) => {
+          if (response.data.status === "success") {
+            const logs = this.state.logs.map((log) => {
+              if (log.id === log_id) {
+                return {
+                  ...log,
+                  handled_by: email_id,
+                  handled_time: current_time,
+                };
+              } else {
+                return log;
+              }
+            });
+            this.setState({ logs });
+          } else {
+            console.log("Error handling log:", response.data.message);
+          }
+        })
+        .catch((error) => console.error("Error handling log:", error));
+    };
     componentDidMount() {
         this.getLogs();
     }
