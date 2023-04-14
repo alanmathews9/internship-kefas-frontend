@@ -12,17 +12,18 @@ class Home extends Component {
 
 
 
-    handleLog = (event, log_id) => {
+      handleLog = (event, log_id) => {
       event.preventDefault();
       const email_id = localStorage.getItem("email_id");
       const current_time = new Date().toLocaleString();
       axios
-        .post('http://127.0.0.1:8000/handle_log/', {
+        .post('http://127.0.0.1:8000/handle_log', {
           handled_by: email_id,
           handled_time: current_time,
         }, {
           headers: {
             "Content-Type": "application/json",
+            
           },
         })
         .then((response) => {
@@ -45,6 +46,9 @@ class Home extends Component {
         })
         .catch((error) => console.error("Error handling log:", error));
     };
+    
+
+
     componentDidMount() {
         this.getLogs();
     }
