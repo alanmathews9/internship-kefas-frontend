@@ -68,7 +68,7 @@ class Home extends Component {
                                             <td>{log.application_name}</td>
                                             <td>{log.level}</td>
                                             <td>{log.message}</td>
-                                             <td>
+                                            <td>
                                                 {/* {item.handled_by === null ? ( */}
                                                     <button
                                                         type="button"
