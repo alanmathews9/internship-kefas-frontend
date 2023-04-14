@@ -17,13 +17,12 @@ class Home extends Component {
       const email_id = localStorage.getItem("email_id");
       const current_time = new Date().toLocaleString();
       axios
-        .post(`/api/logs/${log_id}/handle/`, {
+        .post('http://127.0.0.1:8000/handle_log/', {
           handled_by: email_id,
           handled_time: current_time,
         }, {
           headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": getCookie("csrftoken"),
           },
         })
         .then((response) => {
