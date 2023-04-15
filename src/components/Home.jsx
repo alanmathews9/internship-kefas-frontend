@@ -93,7 +93,7 @@ class Home extends Component {
                                                     <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
-                                                        onClick={(event) => this.handleLog(event, log.log_id)}      
+                                                        onClick={(e) => this.handleLog(e, log.id)}      
                                                     >  
                                                         handle yourself                                                      
                                                     </button>                                                                          
