@@ -4,21 +4,22 @@ import axios from 'axios'
 class Home extends Component {
     constructor() {
         super()
-    
         this.state = {
             logList: [],
-            
-        }
+        };
     }
-
     componentDidMount() {
         this.getLogs();
     }
 
-    handleLog = (event, log_id) => {
-        event.preventDefault();
-        const data = {session_id: localStorage.getItem("session_id"), log_id: log_id, comment: ""}
-        axios.post('http://127.0.0.1:8000/handle_log/', data)
+    handleLog = (e,log_id) => {
+        e.preventDefault();
+        const handleLog = {
+            session_id: localStorage.getItem("session_id"),
+            log_id: log_id,
+            comment: '',
+        };
+        axios.post('http://127.0.0.1:8000/handle_log/',handleLog)
             .then(response => {
                 console.log(response.data)
                 if (response.data.status !== "failure") {
@@ -92,7 +93,7 @@ class Home extends Component {
                                                     <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
-                                                        // onClick={(event) => this.handleLog(event, log.id)}      
+                                                        onClick={(event) => this.handleLog(event, log.log_id)}      
                                                     >  
                                                         handle yourself                                                      
                                                     </button>                                                                          
