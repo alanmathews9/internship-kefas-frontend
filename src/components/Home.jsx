@@ -31,7 +31,7 @@ class Home extends Component {
                 console.log(error);
             })
     }
-
+    
     getLogs = () => { 
         const data = {session_id: localStorage.getItem("session_id")}
         axios.post('http://127.0.0.1:8000/get_all_logs/', data)
@@ -87,17 +87,17 @@ class Home extends Component {
                                             <td>{log.level}</td>
                                             <td>{log.message}</td>
                                             <td>
-                                                 {log.handled_by === null ? ( 
+                                                {/* {item.handled_by === null ? ( */}
                                                     <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
-                                                        onClick={(event) => this.handleLog(event, log.id)}      
+                                                        // onClick={(event) => this.handleLog(event, item.id)}      
                                                     >  
                                                         handle yourself                                                      
                                                     </button>                                                                          
-                                                ) : (               
-                                                         log.handled_by
-                                                )}
+                                                {/* ) : (                                                    */}
+                                                         {/* item.handled_by */}
+                                                {/* )} */}
                                                                                                    
                                             </td>                                            
                                             <td>{log.handled_time}</td>
