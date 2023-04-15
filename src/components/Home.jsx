@@ -13,9 +13,9 @@ class Home extends Component {
         this.getLogs();
     }
 
-    handleComment = (e) => {
-    this.setState({ comment: e.target.value });
-    }
+    // handleComment = (e) => {
+    // this.setState({ comment: e.target.value });
+    // }
     
     handleLog = (e,log_id) => {
         e.preventDefault();
@@ -28,6 +28,7 @@ class Home extends Component {
             .then(response => {
                 console.log(response.data)
                 if (response.data.status !== "failure") {
+                    this.setState({ comment: "" });
                     this.getLogs();
                 }
                 else { 
@@ -102,7 +103,13 @@ class Home extends Component {
                                                         onClick={(e) => this.handleLog(e, log.id)}      
                                                     >  
                                                         handle yourself                                                      
-                                                    </button>            
+                                                        </button>   
+                                                    <br />
+                                                        <input 
+                                                            type="text"                                                 
+                                                            value={this.state.comment}
+                                                            onChange={this.handleComment}                                                      
+                                                        />
                                                     </div>     
                                                 ) : (                                                 
                                                          log.handled_by
@@ -111,24 +118,6 @@ class Home extends Component {
                                             </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>
-                                                {/* {log.comment === '' ? (
-                                                <div>
-                                                    <input type="text"                                                      
-                                                    name="comment"    
-                                                    value={this.state.comment}       
-                                                    onChange={(e) => this.setState({ comment: e.target.value })}                                        
-                                                /> 
-                                                <button
-                                                    type="button"
-                                                    className="btn btm-sm btn-link"
-                                                    onClick={(e) => this.handleLog(e, log.id)}
-                                                >
-                                                    submit
-                                                        </button>
-                                                        </div>
-                                                    ) : (                                                 
-                                                         log.comment
-                                                )} */}
                                                 {log.comment}
                                             </td> 
                                         </tr>
