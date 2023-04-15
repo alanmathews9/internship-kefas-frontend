@@ -95,13 +95,15 @@ class Home extends Component {
                                             <td>{log.message}</td>
                                             <td>
                                                 {log.handled_by === null ? (
-                                                    <button
+                                                    <div> 
+                                                        <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
                                                         onClick={(e) => this.handleLog(e, log.id)}      
                                                     >  
                                                         handle yourself                                                      
-                                                    </button>                                                                          
+                                                    </button>            
+                                                    </div>     
                                                 ) : (                                                 
                                                          log.handled_by
                                                 )}
@@ -109,11 +111,10 @@ class Home extends Component {
                                             </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>
-                                                {log.comment === '' ? (
+                                                {/* {log.comment === '' ? (
                                                 <div>
                                                     <input type="text"                                                      
                                                     name="comment"    
-                            
                                                     value={this.state.comment}       
                                                     onChange={(e) => this.setState({ comment: e.target.value })}                                        
                                                 /> 
@@ -127,8 +128,8 @@ class Home extends Component {
                                                         </div>
                                                     ) : (                                                 
                                                          log.comment
-                                                )}
-   
+                                                )} */}
+                                                {log.comment}
                                             </td> 
                                         </tr>
                                     ))
