@@ -52,7 +52,7 @@ class Home extends Component {
                 console.log(error);
             })
     }
-
+ 
     render() {
         const { logList } = this.state;
         if (!localStorage.getItem("session_id")) {
@@ -103,7 +103,12 @@ class Home extends Component {
                                                                                                    
                                             </td>                                            
                                             <td>{log.handled_time}</td>
-                                            <td>{log.comment}</td>
+                                            <td>
+                                                <input                                                 
+                                                    name="comment"                                                  
+                                                    onChange={this.handleComment}                                                 
+                                                /></td>
+                                            
                                         </tr>
                                     ))
                             
