@@ -7,7 +7,6 @@ class Home extends Component {
         this.state = {
             logList: [],
             comment: '',
-            showCommentBox: false,
         };
     }
     componentDidMount() {
@@ -29,7 +28,7 @@ class Home extends Component {
             .then(response => {
                 console.log(response.data)
                 if (response.data.status !== "failure") {
-                    this.setState({ comment: '',showCommentBox: true, });
+                    this.setState({ comment: '' });
                     this.getLogs();
                 }
                 else { 
@@ -106,11 +105,11 @@ class Home extends Component {
                                                         handle yourself                                                      
                                                         </button>   
                                                     <br />
-                                                        {this.state.showCommentBox && <input
-                                                            type="text"
+                                                        <input 
+                                                            type="text"                                                 
                                                             value={this.state.comment}
-                                                            onChange={this.handleComment}
-                                                        />}
+                                                            onChange={this.handleComment}                                                      
+                                                        />
                                                     </div>     
                                                 ) : (                                                 
                                                          log.handled_by
