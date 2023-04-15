@@ -87,7 +87,7 @@ class Home extends Component {
                                             <td>{log.level}</td>
                                             <td>{log.message}</td>
                                             <td>
-                                                {/* {item.handled_by === null ? ( */}
+                                                {log.handled_by === null ? (
                                                     <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
@@ -95,9 +95,9 @@ class Home extends Component {
                                                     >  
                                                         handle yourself                                                      
                                                     </button>                                                                          
-                                                {/* ) : (                                                    */}
-                                                         {/* item.handled_by */}
-                                                {/* )} */}
+                                                ) : (                                                 
+                                                         log.handled_by
+                                                )}
                                                                                                    
                                             </td>                                            
                                             <td>{log.handled_time}</td>
