@@ -13,9 +13,9 @@ class Home extends Component {
         this.getLogs();
     }
 
-    // handleComment = (e) => {
-    // this.setState({ comment: e.target.value });
-    // }
+    handleComment = (e) => {
+    this.setState({ comment: e.target.value });
+    }
     
     handleLog = (e,log_id) => {
         e.preventDefault();
@@ -28,7 +28,7 @@ class Home extends Component {
             .then(response => {
                 console.log(response.data)
                 if (response.data.status !== "failure") {
-                    this.setState({ comment: "" });
+                    this.setState({ comment: '' });
                     this.getLogs();
                 }
                 else { 
