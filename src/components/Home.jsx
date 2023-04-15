@@ -109,9 +109,12 @@ class Home extends Component {
                                             </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>
-                                                <input type="text"                                              
-                                                    name="comment"                                                  
-                                                    value={this.state.comment}                                 
+                                                {log.comment === '' ? (
+                                                <div>
+                                                    <input type="text"                                                      
+                                                    name="comment"    
+                            
+                                                    value={this.state.comment}       
                                                     onChange={(e) => this.setState({ comment: e.target.value })}                                        
                                                 /> 
                                                 <button
@@ -120,9 +123,13 @@ class Home extends Component {
                                                     onClick={(e) => this.handleLog(e, log.id)}
                                                 >
                                                     submit
-                                                </button>
-                                            </td>
-                                            
+                                                        </button>
+                                                        </div>
+                                                    ) : (                                                 
+                                                         log.comment
+                                                )}
+   
+                                            </td> 
                                         </tr>
                                     ))
                             
