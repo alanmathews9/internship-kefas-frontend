@@ -9,6 +9,7 @@ class Home extends Component {
             comment: '',
         };
     }
+    
     componentDidMount() {
         this.getLogs();
     }
@@ -113,22 +114,18 @@ class Home extends Component {
                                                     </div>     
                                                 ) : (                                                 
                                                          log.handled_by
-                                                )}
-                                                                                                   
+                                                )}                                                
                                             </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>
                                                 {log.comment}
                                             </td> 
                                         </tr>
-                                    ))
-                            
+                                    ))          
                                 )
                             }
-                        
                         </tbody>
                     </table>
-                
                 </div>
             )
         }
