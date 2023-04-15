@@ -6,7 +6,8 @@ class Home extends Component {
         super()
     
         this.state = {
-            logList:[],
+            logList: [],
+            
         }
     }
 
@@ -16,7 +17,7 @@ class Home extends Component {
 
     handleLog = (event, log_id) => {
         event.preventDefault();
-        const data = {session_id: localStorage.getItem("session_id"), log_id: log_id, comment: "Handled by user"}
+        const data = {session_id: localStorage.getItem("session_id"), log_id: log_id, comment: ""}
         axios.post('http://127.0.0.1:8000/handle_log/', data)
             .then(response => {
                 console.log(response.data)
@@ -91,7 +92,7 @@ class Home extends Component {
                                                     <button
                                                         type="button"
                                                         className="btn btm-sm btn-link"
-                                                        // onClick={(event) => this.handleLog(event, item.id)}      
+                                                        // onClick={(event) => this.handleLog(event, log.id)}      
                                                     >  
                                                         handle yourself                                                      
                                                     </button>                                                                          
