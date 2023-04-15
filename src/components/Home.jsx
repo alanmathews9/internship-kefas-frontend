@@ -6,18 +6,23 @@ class Home extends Component {
         super()
         this.state = {
             logList: [],
+            comment: '',
         };
     }
     componentDidMount() {
         this.getLogs();
     }
 
+    handleComment = (e) => {
+    this.setState({ comment: e.target.value });
+    }
+    
     handleLog = (e,log_id) => {
         e.preventDefault();
         const handleLog = {
             session_id: localStorage.getItem("session_id"),
             log_id: log_id,
-            comment: '',
+            comment: this.state.comment,
         };
         axios.post('http://127.0.0.1:8000/handle_log/',handleLog)
             .then(response => {
@@ -104,10 +109,19 @@ class Home extends Component {
                                             </td>                                            
                                             <td>{log.handled_time}</td>
                                             <td>
-                                                <input                                                 
+                                                <input type="text"                                              
                                                     name="comment"                                                  
-                                                    onChange={this.handleComment}                                                 
-                                                /></td>
+                                                    value={this.state.comment}                                 
+                                                    onChange={(e) => this.setState({ comment: e.target.value })}                                        
+                                                /> 
+                                                <button
+                                                    type="button"
+                                                    className="btn btm-sm btn-link"
+                                                    onClick={(e) => this.handleLog(e, log.id)}
+                                                >
+                                                    submit
+                                                </button>
+                                            </td>
                                             
                                         </tr>
                                     ))
