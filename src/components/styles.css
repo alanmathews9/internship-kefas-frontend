@@ -21,9 +21,11 @@ h2 {
 
 .link-change:hover{
     text-decoration: underline;
+    color: white;
 }
 .text-container {
     margin-right: 20px;
+
 }
 .button-container {
     margin-top: 20px;
