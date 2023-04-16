@@ -48,13 +48,13 @@ class navbar extends Component {
                   <Link to="/">
                     <button
                     type="button"
-                    className="btn btn-sm btn-outline-light me-2"
+                    className=" button-container btn btn-sm btn-outline-light me-2"
                     >
                     Sign in
                     </button>
                   </Link>                 
                   <Link to="/sign-up">                  
-                    <button type="button" className="btn btn-sm btn-light">                    
+                    <button type="button" className="button-container btn btn-sm btn-light">                    
                       Sign up                    
                     </button>                  
                   </Link>                 

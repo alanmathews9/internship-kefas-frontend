@@ -52,19 +52,21 @@ class Signin extends Component {
             <h2>Sign In</h2>
             <form method="POST" onSubmit={this.handleSignIn}>
               <label>
-                Email:
+                Email
                 <input
                   name="email_id"
                   type="email"
+                  placeholder="Email"
                   onChange={this.handleChange}
                   required
                 />
               </label>
               <label>
-                Password:
+                Password
                 <input
                   type="password"
                   name="password"
+                  placeholder="Password"
                   onChange={this.handleChange}
                   required
                 />
