@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import "./styles.css"
 class navbar extends Component {
 
   handleLogout = (e) => {
@@ -29,9 +30,9 @@ class navbar extends Component {
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
-                <div style="line-height: 1.5;">
+                <text className="button-container  text-white">
                     {localStorage.getItem('email_id')}
-                </div>
+                </text>
               <Link to="/sign-up">
                 <button
                     type="button"

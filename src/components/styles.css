@@ -13,6 +13,9 @@ h2 {
     margin-top: 0;
 }
 
+.button-container {
+    margin-right: 20px;
+}
 form {
     display: flex;
     flex-direction: column;
