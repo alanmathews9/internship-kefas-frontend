@@ -101,7 +101,7 @@ class Home extends Component {
                                                     <div> 
                                                         <button
                                                         type="button"
-                                                        className="btn btm-sm btn-link comment "
+                                                        className="btn btn-sm btn-dark comment "
                                                         onClick={(e) => this.handleLog(e, log.id)}      
                                                     >  
                                                         handle yourself                                                      
