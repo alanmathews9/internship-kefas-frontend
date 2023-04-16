@@ -101,14 +101,15 @@ class Home extends Component {
                                                     <div> 
                                                         <button
                                                         type="button"
-                                                        className="btn btm-sm btn-link"
+                                                        className="btn btm-sm btn-link comment "
                                                         onClick={(e) => this.handleLog(e, log.id)}      
                                                     >  
                                                         handle yourself                                                      
                                                         </button>   
                                                     <br />
                                                         <input 
-                                                            type="text"                                                 
+                                                            type="text"
+                                                            className="comment"
                                                             value={this.state.comment}
                                                             onChange={this.handleComment}                                                      
                                                         />
