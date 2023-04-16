@@ -29,9 +29,9 @@ class navbar extends Component {
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
-                <text className="text-white">
+                <div style="line-height: 1.5;">
                     {localStorage.getItem('email_id')}
-                </text>
+                </div>
               <Link to="/sign-up">
                 <button
                     type="button"
