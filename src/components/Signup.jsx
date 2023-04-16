@@ -49,28 +49,31 @@ handleSignUp = (e) =>{
             <h2>Sign Up</h2>
             <form method="POST" onSubmit={this.handleSignUp}>
               <label>
-                Name:
+                Name
                 <input
                   name="name"
-                  type="text"     
+                  type="text"  
+                  placeholder="Name"
                   onChange={this.handleChange}
                   required
                 />
               </label>
               <label>
-                Email:
+                Email
                 <input
                   name="email_id"
                   type="email"
+                  placeholder="Email"
                   onChange={this.handleChange}
                   required
                 />
               </label>
               <label>
-                Password:
+                Password
                 <input
                   type="password"
                   name="password"
+                  placeholder="Password"
                   onChange={this.handleChange}
                   required
                 />
