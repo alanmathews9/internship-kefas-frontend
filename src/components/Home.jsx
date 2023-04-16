@@ -109,6 +109,7 @@ class Home extends Component {
                                                     <br />
                                                         <input 
                                                             type="text"
+                                                            placeholder="Comment"
                                                             className="comment"
                                                             value={this.state.comment}
                                                             onChange={this.handleComment}                                                      
