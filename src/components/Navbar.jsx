@@ -27,7 +27,7 @@ class navbar extends Component {
       <div>
         <nav class="nav-container navbar bg-dark">
           <div class="container-fluid">           
-            <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
+            <Link to= "/" class="log-container navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
                 <text className="text-container  text-white">

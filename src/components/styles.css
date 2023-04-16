@@ -19,6 +19,9 @@ h2 {
     text-decoration: none;
 }
 
+.log-container:hover {
+    text-decoration: none;
+}
 .link-change:hover{
     text-decoration: underline;
     color: white;
