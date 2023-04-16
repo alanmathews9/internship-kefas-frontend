@@ -71,10 +71,10 @@ class Signin extends Component {
                   required
                 />
               </label>
-              <button type="submit">Sign In</button>
+              <button type="submit" className="bg-dark">Sign In</button>
             </form>
             <p>
-              Don't have an account? <a href="/sign-up">Sign Up</a>
+              Don't have an account? <a href="/sign-up" className= "btn btn-sm bg-dark btn-link">Sign Up</a>
             </p>
           </div>
         </div>

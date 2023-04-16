@@ -78,7 +78,7 @@ handleSignUp = (e) =>{
                   required
                 />
               </label>
-              <button type="submit">Sign Up</button>
+              <button type="submit" className="bg-dark">Sign Up</button>
             </form>
           </div>
         </div>
