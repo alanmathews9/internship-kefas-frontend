@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios'
 import "./styles.css"
+import userIcon from './user-icon.svg';
+
 class navbar extends Component {
 
   handleLogout = (e) => {
@@ -29,10 +31,13 @@ class navbar extends Component {
           <div class="container-fluid">           
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
-            <div>
+              <div>
+                <div className="d-flex align-items-center right">
+                  <img src={userIcon} alt="User icon" className="me-2" />
                 <text className="text-container  text-white">
                     {localStorage.getItem('email_id')}
-                </text>
+                  </text>
+                  </div>
               <Link to="/sign-up">
                 <button
                     type="button"
