@@ -30,13 +30,13 @@ class navbar extends Component {
             <Link to= "/" class="navbar-brand text-white">LOG - MONITOR</Link>
             {localStorage.getItem("session_id") ? (
             <div>
-                <text className="button-container  text-white">
+                <text className="text-container  text-white">
                     {localStorage.getItem('email_id')}
                 </text>
               <Link to="/sign-up">
                 <button
                     type="button"
-                    className="btn btn-sm btn-light"
+                    className="button-container btn btn-sm btn-light"
                     onClick={this.handleLogout}
                   >
                   Logout

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import "./styles.css"
 
 class Home extends Component {
     constructor() {
@@ -68,7 +69,7 @@ class Home extends Component {
         else {
             return (
                 <div className="table-responsive my-2">
-                    <table className="table table-hover ">
+                    <table className="table-container table table-hover ">
                         <thead className="table-secondary">
                             <tr>
                                 <th scope="col">ID</th>
