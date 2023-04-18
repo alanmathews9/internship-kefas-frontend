@@ -13,12 +13,16 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLogs();
-    setInterval(this.loadData, 30000)
+    this.interval = setInterval(() => this.getLogs(), 30000); 
   }
 
-  handleComment = (e) => {
-    this.setState({ comment: e.target.value });
-  };
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+//   handleComment = (e) => {
+//     this.setState({ comment: e.target.value });
+//   };
 
   handleLog = (e, log_id) => {
     e.preventDefault();
@@ -105,14 +109,14 @@ class Home extends Component {
                           >
                             handle yourself
                           </button>
-                          <br />
+                          {/* <br />
                           <input
                             type="text"
                             placeholder="Comment"
                             className="comment"
                             value={this.state.comment}
                             onChange={this.handleComment}
-                          />
+                          /> */}
                         </div>
                       ) : (
                         log.handled_by
