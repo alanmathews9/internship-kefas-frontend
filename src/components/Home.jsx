@@ -13,7 +13,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getLogs();
-    this.interval = setInterval(() => this.getLogs(), 30000); 
+    this.interval = setInterval(() => this.getLogs(), 10000); 
   }
 
   componentWillUnmount() {
