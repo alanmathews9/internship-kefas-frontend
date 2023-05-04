@@ -9,7 +9,11 @@ class Signin extends Component {
       loginInfo: {
         email_id: '',
         password: '',
-      }
+      },
+      errorMessage: {
+        email_id: '',
+        password: '',
+      },
     };
   }
   
@@ -32,8 +36,10 @@ class Signin extends Component {
           window.location.href="/home"
         }
         else if (response.data.status === "failure") {
-          alert("Incorrect email id or password");
-          console.log(response.data.reason);
+          let errorMessage = { ...this.state.errorMessage };
+          errorMessage.email_id = 'Incorrect email id or password';
+          errorMessage.password = 'Incorrect email id or password';
+          this.setState({ errorMessage });
         }
       }).catch((error) => {
         console.log(error);
@@ -59,7 +65,11 @@ class Signin extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
+                  style={{ borderColor: this.state.errorMessage.email_id ? 'red' : '' }}
                 />
+                <div style={{ color: 'red', fontSize: '12px' }}>
+                  {this.state.errorMessage.email_id}
+                </div>
               </label>
               <label>
                 Password
@@ -69,7 +79,11 @@ class Signin extends Component {
                   placeholder="Password"
                   onChange={this.handleChange}
                   required
+                  style={{ borderColor: this.state.errorMessage.password ? 'red' : '' }}
                 />
+                <div style={{ color: 'red', fontSize: '12px' }}>
+                  {this.state.errorMessage.password}
+                </div>
               </label>
               <button type="submit" className="bg-dark">Sign In</button>
             </form>
@@ -83,4 +97,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin
+export default Signin;
