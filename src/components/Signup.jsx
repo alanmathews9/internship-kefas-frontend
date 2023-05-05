@@ -50,6 +50,7 @@ class Signup extends Component {
               <label>
                 Name
                 <input
+                  className="input-box"
                   name="name"
                   type="text"
                   placeholder="Name"
@@ -74,6 +75,7 @@ class Signup extends Component {
               <label>
                 Password
                 <input
+                  className="input-box"
                   type="password"
                   name="password"
                   placeholder="Password"
