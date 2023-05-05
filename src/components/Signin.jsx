@@ -60,7 +60,7 @@ class Signin extends Component {
               <label>
                 Email
                 <input
-                  className="form-control"
+                  className="form-control input-box"
                   name="email_id"
                   type="email"
                   placeholder="Email"
@@ -76,17 +76,19 @@ class Signin extends Component {
               </label>
               <label>
                 Password
-                <input
-                  className="form-control"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                  required
-                  style={{
-                    borderColor: this.state.errorMessage.password ? "red" : "",
-                  }}
-                />
+                  <input
+                    className="form-control input-box"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={this.handleChange}
+                    required
+                    style={{
+                      borderColor: this.state.errorMessage.password
+                        ? "red"
+                        : "",
+                    }}
+                  />
                 <div style={{ color: "red", fontSize: "12px" }}>
                   {this.state.errorMessage.password}
                 </div>
