@@ -1,16 +1,17 @@
-import React, { useState , Component} from "react";
-import "./styles.css"
-import axios from "axios"
+import React, { Component } from "react";
+import axios from "axios";
+import "./styles.css";
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       signinInfo: {
-        name: '',
-        email_id: '',
-        password: '',
-      }
+        name: "",
+        email_id: "",
+        password: "",
+      },
+      emailExistsError: false, // new state property to keep track of email exists error
     };
   }
 
@@ -18,30 +19,28 @@ class Signup extends Component {
     let signinInfo = { ...this.state.signinInfo };
     signinInfo[e.target.name] = e.target.value;
     this.setState({ signinInfo });
-    console.log(this.state.signinInfo.name);
-    console.log(this.state.signinInfo.email_id);
-    console.log(this.state.signinInfo.password);
   };
-    
-handleSignUp = (e) =>{
-  e.preventDefault();
-  axios.post("http://127.0.0.1:8000/register_user/", this.state.signinInfo)
-    .then((response) => { 
-      if (response.data.status === "success") {
-        alert("User Register Successfully")
-        window.location.href="/"
-      }
-      else if (response.data.status === "failure") {
-        alert("User already exists");
-        console.log(response.data.reason);
-      }
 
-    }).catch((error) => {
+  handleSignUp = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://127.0.0.1:8000/register_user/", this.state.signinInfo)
+      .then((response) => {
+        if (response.data.status === "success") {
+          alert("User Register Successfully");
+          window.location.href = "/";
+        } else if (response.data.status === "failure") {
+          this.setState({ emailExistsError: true }); // set emailExistsError to true
+          console.log(response.data.reason);
+        }
+      })
+      .catch((error) => {
         console.log(error);
       });
   };
-  
+
   render() {
+    const { emailExistsError } = this.state;
     return (
       <div>
         <div>
@@ -52,7 +51,7 @@ handleSignUp = (e) =>{
                 Name
                 <input
                   name="name"
-                  type="text"  
+                  type="text"
                   placeholder="Name"
                   onChange={this.handleChange}
                   required
@@ -66,7 +65,11 @@ handleSignUp = (e) =>{
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
+                  className={emailExistsError ? "error" : ""} // add 'error' class when emailExistsError is true
                 />
+                {emailExistsError && (
+                  <div className="error-message">User already exists</div>
+                )}
               </label>
               <label>
                 Password
@@ -78,13 +81,15 @@ handleSignUp = (e) =>{
                   required
                 />
               </label>
-              <button type="submit" className="bg-dark">Sign Up</button>
+              <button type="submit" className="bg-dark">
+                Sign Up
+              </button>
             </form>
           </div>
         </div>
       </div>
     );
   }
-};
+}
 
 export default Signup;
