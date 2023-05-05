@@ -66,13 +66,8 @@ class Signin extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
-                  style={{
-                    borderColor: this.state.errorMessage.email_id ? "red" : "",
-                  }}
+                 
                 />
-                <div style={{ color: "red", fontSize: "12px" }}>
-                  {this.state.errorMessage.email_id}
-                </div>
               </label>
               <label>
                 <div className="text-place">Password</div>
