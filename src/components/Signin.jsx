@@ -57,7 +57,7 @@ class Signin extends Component {
           <div className="container">
             <h2>Sign In</h2>
             <form method="POST" onSubmit={this.handleSignIn}>
-              <label>
+              <label className="text-place">
                 Email
                 <input
                   className="form-control input-box"
@@ -74,21 +74,19 @@ class Signin extends Component {
                   {this.state.errorMessage.email_id}
                 </div>
               </label>
-              <label>
+              <label className="text-place">
                 Password
-                  <input
-                    className="form-control input-box"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={this.handleChange}
-                    required
-                    style={{
-                      borderColor: this.state.errorMessage.password
-                        ? "red"
-                        : "",
-                    }}
-                  />
+                <input
+                  className="form-control input-box"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                  required
+                  style={{
+                    borderColor: this.state.errorMessage.password ? "red" : "",
+                  }}
+                />
                 <div style={{ color: "red", fontSize: "12px" }}>
                   {this.state.errorMessage.password}
                 </div>
