@@ -88,3 +88,12 @@ p {
     margin-top: 20px;
     text-align: center;
 }
+
+.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    margin-top: 0.5rem;
+}
