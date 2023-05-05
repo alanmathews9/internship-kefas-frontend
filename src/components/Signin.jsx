@@ -88,7 +88,7 @@ class Signin extends Component {
               <button type="submit" className="bg-dark">Sign In</button>
             </form>
             <p>
-              Don't have an account? <a href="/sign-up" className= "link-change btn btn-sm bg-dark btn-link">Sign Up</a>
+              Don't have an account? <a href="/sign-up">Sign Up</a>
             </p>
           </div>
         </div>
