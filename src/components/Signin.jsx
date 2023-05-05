@@ -60,6 +60,7 @@ class Signin extends Component {
               <label>
                 Email
                 <input
+                  className="form-control"
                   name="email_id"
                   type="email"
                   placeholder="Email"
@@ -76,6 +77,7 @@ class Signin extends Component {
               <label>
                 Password
                 <input
+                  className="form-control"
                   type="password"
                   name="password"
                   placeholder="Password"
