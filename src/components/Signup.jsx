@@ -50,7 +50,7 @@ class Signup extends Component {
               <label>
                 Name
                 <input
-                  className="input-box"
+                  className="form-control"
                   name="name"
                   type="text"
                   placeholder="Name"
@@ -66,7 +66,7 @@ class Signup extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
-                  className={emailExistsError ? "error" : ""} // add 'error' class when emailExistsError is true
+                  className={`form-control emailExistsError ? "error" : ""`} // add 'error' class when emailExistsError is true
                 />
                 {emailExistsError && (
                   <div className="error-message">User already exists</div>
@@ -75,7 +75,7 @@ class Signup extends Component {
               <label>
                 Password
                 <input
-                  className="input-box"
+                  className="form-control"
                   type="password"
                   name="password"
                   placeholder="Password"
