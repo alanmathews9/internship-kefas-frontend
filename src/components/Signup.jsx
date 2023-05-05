@@ -66,7 +66,10 @@ class Signup extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
-                  className={`form-control input-box emailExistsError ? "error" : ""`} // add 'error' class when emailExistsError is true
+                  className={`form-control input-box emailExistsError ? "error" : ""`}
+                  style={{
+                    borderColor: this.state.emailExistsError ? "red" : "",
+                  }} // add 'error' class when emailExistsError is true
                 />
                 {emailExistsError && (
                   <div className="error-message">User already exists</div>
