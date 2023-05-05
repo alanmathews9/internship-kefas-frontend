@@ -57,8 +57,8 @@ class Signin extends Component {
           <div className="container">
             <h2>Sign In</h2>
             <form method="POST" onSubmit={this.handleSignIn}>
-              <label className="text-place">
-                Email
+              <label>
+                <div className="text-place">Email</div>
                 <input
                   className="form-control input-box"
                   name="email_id"
@@ -74,8 +74,8 @@ class Signin extends Component {
                   {this.state.errorMessage.email_id}
                 </div>
               </label>
-              <label className="text-place">
-                Password
+              <label>
+                <div className="text-place">Password</div>
                 <input
                   className="form-control input-box"
                   type="password"

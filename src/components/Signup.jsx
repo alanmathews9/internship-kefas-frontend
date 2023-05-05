@@ -47,8 +47,8 @@ class Signup extends Component {
           <div className="container">
             <h2>Sign Up</h2>
             <form method="POST" onSubmit={this.handleSignUp}>
-              <label className="text-place">
-                Name
+              <label>
+                <div className="text-place">Name</div>
                 <input
                   className="form-control input-box"
                   name="name"
@@ -58,8 +58,8 @@ class Signup extends Component {
                   required
                 />
               </label>
-              <label className="text-place">
-                Email
+              <label>
+                <div className="text-place">Email</div>
                 <input
                   name="email_id"
                   type="email"
@@ -72,8 +72,8 @@ class Signup extends Component {
                   <div className="error-message">User already exists</div>
                 )}
               </label>
-              <label className="text-place">
-                Password
+              <label>
+                <div className="text-place">Password</div>
                 <input
                   className="form-control input-box"
                   type="password"
