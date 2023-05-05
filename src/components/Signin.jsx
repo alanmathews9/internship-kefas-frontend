@@ -66,8 +66,11 @@ class Signin extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
-                 
+                  style={{
+                    borderColor: this.state.errorMessage.email_id ? "red" : "",
+                  }}
                 />
+
               </label>
               <label>
                 <div className="text-place">Password</div>
@@ -82,7 +85,7 @@ class Signin extends Component {
                     borderColor: this.state.errorMessage.password ? "red" : "",
                   }}
                 />
-                <div style={{ color: "red", fontSize: "12px" }}>
+                <div style={{ color: "red", fontSize: "16px" }}>
                   {this.state.errorMessage.password}
                 </div>
               </label>
