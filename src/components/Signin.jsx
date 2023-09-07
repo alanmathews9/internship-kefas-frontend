@@ -3,8 +3,8 @@ import "./styles.css";
 import axios from 'axios';
 
 class Signin extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props) {               // constructor is used to initialize state
+    super(props);                    // super is used to call parent class constructor
     this.state = {
       loginInfo: {      // loginInfo state to store email id and password
         email_id: '',
@@ -61,9 +61,9 @@ class Signin extends Component {
                 <div className="text-place">Email</div>
                 <input
                   className="form-control input-box"
-                  name="email_id"
-                  type="email"
-                  placeholder="Email"
+                  name="email_id"               
+                  type="email"                  
+                  placeholder="Email"           // placeholder is the text that is shown in input field
                   onChange={this.handleChange}  // function to handle change in input fields
                   required
                   style={{
@@ -78,7 +78,7 @@ class Signin extends Component {
                   className="form-control input-box"
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Password"    
                   onChange={this.handleChange}
                   required
                   style={{
