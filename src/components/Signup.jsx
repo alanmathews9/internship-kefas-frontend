@@ -15,7 +15,7 @@ class Signup extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => {                      // function to handle change in input fields
     let signinInfo = { ...this.state.signinInfo };
     signinInfo[e.target.name] = e.target.value;
     this.setState({ signinInfo });
@@ -24,7 +24,7 @@ class Signup extends Component {
   handleSignUp = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/register_user/", this.state.signinInfo)
+      .post("http://127.0.0.1:8000/register_user/", this.state.signinInfo)  // pass signinInfo state to register user
       .then((response) => {
         if (response.data.status === "success") {
           alert("User Register Successfully");
@@ -40,8 +40,8 @@ class Signup extends Component {
   };
 
   render() {
-    const { emailExistsError } = this.state;
-    return (
+    const { emailExistsError } = this.state;    // destructuring emailExistsError from state, so that we can use it directly.
+    return (                                    // storing the value of emailExistsError in a variable, so that we can use it in style attribute
       <div>
         <div>
           <div className="container">
@@ -66,12 +66,12 @@ class Signup extends Component {
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
-                  className={`form-control input-box emailExistsError ? "error" : ""`}
+                  className={`form-control input-box emailExistsError ? "error" : ""`}  // add 'error' class when emailExistsError is true
                   style={{
-                    borderColor: this.state.emailExistsError ? "red" : "",
-                  }} // add 'error' class when emailExistsError is true
+                    borderColor: this.state.emailExistsError ? "red" : "",  
+                  }} // if emailExistsError is true, border color is set to red
                 />
-                {emailExistsError && (
+                {emailExistsError && (                   // if emailExistsError is true, show error message, && is used to check if emailExistsError is true
                   <div className="error-message">User already exists</div>
                 )}
               </label>
