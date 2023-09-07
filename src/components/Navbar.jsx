@@ -4,14 +4,15 @@ import axios from 'axios'
 import "./styles.css"
 class navbar extends Component {
 
+
   handleLogout = (e) => {
     e.preventDefault();
-    axios.post("http://127.0.0.1:8000/logout/", { session_id: localStorage.getItem('session_id') })
+    axios.post("http://127.0.0.1:8000/logout/", { session_id: localStorage.getItem('session_id') }) 
       .then((response) => {
         if (response.data.status === "success") {
           localStorage.removeItem('session_id');
           localStorage.removeItem('email_id');
-          window.location.href="/"
+          window.location.href="/"              
         }
         else if (response.data.status === "failure") {
           alert("Invalid session_id");
@@ -28,7 +29,7 @@ class navbar extends Component {
         <nav class="nav-container navbar bg-dark">
           <div class="container-fluid">           
             <Link to= "/" class="log-container navbar-brand text-white">LOG - MONITOR</Link>
-            {localStorage.getItem("session_id") ? (
+            {localStorage.getItem("session_id") ? (       // if session id is present in local storage show email id and logout button
             <div>
                 <text className="text-container  text-white">
                     {localStorage.getItem('email_id')}
@@ -37,13 +38,13 @@ class navbar extends Component {
                 <button
                     type="button"
                     className="button-container btn btn-sm btn-light"
-                    onClick={this.handleLogout}
+                    onClick={this.handleLogout}       
                   >
                   Logout
                 </button>
               </Link>
             </div>
-            ): (
+            ): (                                        // else show sign in and sign up button
                 <div>
                   <Link to="/">
                     <button
